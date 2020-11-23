@@ -105,8 +105,8 @@ class MockURLSession: URLSessionReplaceable {
     return urlSessionEvents as? URLSessionDataDelegate
   }
 
-  var sessionDelegate: SessionDelegate? {
-    return urlSessionEvents as? SessionDelegate
+  var sessionDelegate: PubNubSessionDelegate? {
+    return urlSessionEvents as? PubNubSessionDelegate
   }
 
   func resume(task: MockURLSessionTask) {
@@ -143,7 +143,7 @@ extension MockURLSession {
     for jsonResources: [String],
     with stream: SessionStream? = nil
   ) throws -> (session: Session?, mockSession: MockURLSession) {
-    let urlSession = MockURLSession(configuration: .ephemeral, delegate: SessionDelegate(), delegateQueue: .main)
+    let urlSession = MockURLSession(configuration: .ephemeral, delegate: PubNubSessionDelegate(), delegateQueue: .main)
 
     urlSession.responseForTask = { mockTask, index in
       guard jsonResources.count > index else {

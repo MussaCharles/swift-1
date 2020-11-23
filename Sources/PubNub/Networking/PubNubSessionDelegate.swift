@@ -1,5 +1,5 @@
 //
-//  SessionDelegate.swift
+//  PubNubSessionDelegate.swift
 //
 //  PubNub Real-time Cloud-Hosted Push API and Push Notification Client Frameworks
 //  Copyright © 2019 PubNub Inc.
@@ -28,11 +28,11 @@
 import Foundation
 
 /// A protocol defining a bridge to an implementation of `URLSessionDataDelegate` for receiving delegation events
-public class SessionDelegate: NSObject {
+public class PubNubSessionDelegate: NSObject {
   weak var sessionBridge: SessionStateBridge?
 }
 
-extension SessionDelegate: URLSessionDataDelegate {
+extension PubNubSessionDelegate: URLSessionDataDelegate {
   // MARK: - URLSessionDelegate
 
   // Task was invalidated by the session directly

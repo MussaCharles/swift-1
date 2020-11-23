@@ -42,7 +42,7 @@ public final class Session {
   /// The state that tracks the validity of the underlying `URLSessionReplaceable`
   let invalidationState = AtomicInt(0)
   /// The delegate that receives incoming network transmissions
-  weak var delegate: SessionDelegate?
+  weak var delegate: PubNubSessionDelegate?
   /// The event stream that session activity status will emit to
   let sessionStream: SessionStream?
   /// The `RequestOperator` that is attached to every request
@@ -52,7 +52,7 @@ public final class Session {
 
   public init(
     session: URLSessionReplaceable,
-    delegate: SessionDelegate,
+    delegate: PubNubSessionDelegate,
     sessionQueue: DispatchQueue,
     requestQueue: DispatchQueue? = nil,
     sessionStream: SessionStream? = nil
@@ -74,7 +74,7 @@ public final class Session {
 
   public convenience init(
     configuration: URLSessionConfiguration = .ephemeral,
-    delegate: SessionDelegate = SessionDelegate(),
+    delegate: PubNubSessionDelegate = PubNubSessionDelegate(),
     sessionQueue: DispatchQueue = DispatchQueue(label: "com.pubnub.session.sessionQueue"),
     requestQueue: DispatchQueue? = nil,
     sessionStream: SessionStream? = nil
